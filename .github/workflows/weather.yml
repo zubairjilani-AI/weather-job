@@ -9,12 +9,18 @@ jobs:
   log:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: pip install requests
-      - name: Run python script
-        run: python Weatherjob_job.py
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run weather script
         env:
           SHEET_URL: ${{ secrets.SHEET_URL }}
+        run: python Weatherjob_job.py
