@@ -14,6 +14,7 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install requests
-      - run: python Weatherjob_job.py
+      - name: Run python script
+        run: python Weatherjob_job.py
         env:
           SHEET_URL: ${{ secrets.SHEET_URL }}
